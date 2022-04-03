@@ -1,11 +1,38 @@
-import React, { useState } from 'react';
-import './App.css';
+import React, { useEffect, useState, useCallback } from 'react';
+import { Howl, Howler } from 'howler';
 
+import { voiceSpeed, voiceSpriteSheet } from './utils';
+import soundSrc from './assets/kelden-full-jp-1.mp3';
+import './App.css';
 
 function App() {
   const [input, setInput] = useState('');
   const [isTranslating, setIsTranslating] = useState(false);
   const [outputData, setOutputData] = useState();
+  const [speakingArr, setSpeakingArr] = useState([]);
+
+  useEffect(() => {
+    if (!speakingArr.length) return;
+    const sound = new Howl({
+      src: [soundSrc],
+      sprite: voiceSpriteSheet,
+      rate: voiceSpeed,
+      html5: true,
+      onend: onSoundEnd
+    })
+
+    sound.play(speakingArr[0]);
+    // sound.onend = onSoundEnd
+  }, [speakingArr])
+
+  const onSoundEnd = useCallback(() => {
+    console.log(speakingArr);
+    const newSpeakingArr = [...speakingArr];
+    console.log('update array to ', newSpeakingArr);
+    newSpeakingArr.shift();
+    console.log('update array to ', newSpeakingArr);
+    setSpeakingArr(newSpeakingArr);
+  }, [speakingArr]);
 
   const translate = async () => {
     setIsTranslating(true);
@@ -26,13 +53,20 @@ function App() {
       })
       .then(data => {
         setOutputData(data);
+        setSpeakingArr(data.romanjiArray);
         setIsTranslating(false);
-
       })
       .catch(err => {
-        alert(err)
+        alert(err);
+        setIsTranslating(false);
       });
   }
+
+  // useEffect(() => {
+  //   if (!outputData) return;
+
+  // }, [outputData])
+
   const handleEnterKeyDown = (e) => {
     e.nativeEvent.key === 'Enter' && translate();
   }
