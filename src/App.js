@@ -33,6 +33,9 @@ function App() {
         alert(err)
       });
   }
+  const handleEnterKeyDown = (e) => {
+    e.nativeEvent.key === 'Enter' && translate();
+  }
 
   const outputDisplay = outputData ?
     <div>
@@ -51,15 +54,17 @@ function App() {
           placeholder="Something to say"
           value={input}
           onChange={(e) => setInput(e.target.value)}
+          onKeyDown={handleEnterKeyDown}
           disabled={isTranslating}
         />
         <div className="loadingContainer">
           {isTranslating ?
             <p>Translating...</p>
             : outputDisplay}
-          { }
         </div>
-        <button onClick={translate} className="translateButton">Translate</button>
+        {!(outputData && outputData.input === input) ?
+          <button onClick={translate} className="translateButton">Translate</button>
+          : undefined}
       </div>
     </div>
   );
