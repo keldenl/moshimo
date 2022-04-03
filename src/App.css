@@ -14,9 +14,18 @@
 }
 
 .translateButton {
-    position: fixed;
+    position: absolute;
     bottom: 20vh;
     border: none;
     -webkit-appearance: none;
     -moz-appearance: none;
+}
+
+.loadingContainer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #2196f3;
+    color: white;
 }
