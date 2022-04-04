@@ -18,7 +18,6 @@ function App() {
     const nextBreakIndex = speakingArr.indexOf('--');
     const endIndex = nextBreakIndex > -1 ? nextBreakIndex : speakingArr.length;
     const currWordArr = [...speakingArr].slice(0, endIndex);
-    console.log(currWordArr);
 
     const wordDelayArr = currWordArr.map(char => {
       const [, length] = voiceSpriteSheet[char];
@@ -62,7 +61,6 @@ function App() {
   }, [speakingArr])
 
   const onWordSoundEnd = () => {
-    console.log('word sound end');
     const nextBreakIndex = speakingArr.indexOf('--');
     const nextWordArr = [...speakingArr].slice(nextBreakIndex + 1, speakingArr.length);
     while (nextWordArr[0] === '--' || nextWordArr[0] === '-') {
@@ -71,7 +69,6 @@ function App() {
 
     // manually add the word break
     setTimeout(() => {
-      console.log('set speakingArr to ', nextWordArr);
       setSpeakingArr(nextWordArr);
       setSpeakingIdx(speakingIdx + 1);
     }, 500);
@@ -142,6 +139,7 @@ function App() {
   const outputDisplay = outputData ?
     <div>
       <p>{outputData.japanese}</p>
+      <p>{outputData.romanji}</p>
       <p onClick={() => setSpeakingArr(outputData.romanjiArray)}>
         {outputData.romanjiArray.join("").replaceAll("--", " ").split(" ").map((word, index) => {
           return <span key={index} className={index === speakingIdx ? "active" : undefined}>{word} </span>

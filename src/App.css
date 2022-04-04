@@ -1,5 +1,6 @@
 .App {
     text-align: center;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .container {
@@ -8,9 +9,11 @@
 }
 
 .inputText {
-    width: 100%;
-    height: 100%;
-    font-size: larger;
+    width: calc(100% - 50px);
+    height: calc(100% - 50px);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 2.5rem;
+    padding: 25px;
 }
 
 .translateButton {
