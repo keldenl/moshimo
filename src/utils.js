@@ -24,6 +24,7 @@ export const voiceSpriteSheet = {
     "za": [22000, 270],
     "si": [23000, 320],
     "shi": [23000, 320], // shi is the same as si
+    "sshi": [23000, 320], // sshi is the same as si
     "sha": [24000, 250],
     "shu": [25000, 270],
     "sho": [26000, 200],
