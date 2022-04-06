@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6d415b33.css",
+    "main.js": "/static/js/main.3d1e2cb5.js",
+    "static/js/787.3b47af9e.chunk.js": "/static/js/787.3b47af9e.chunk.js",
+    "static/media/kelden-full-jp-1.mp3": "/static/media/kelden-full-jp-1.152dcb1db9d469bb87ea.mp3",
+    "index.html": "/index.html",
+    "main.6d415b33.css.map": "/static/css/main.6d415b33.css.map",
+    "main.3d1e2cb5.js.map": "/static/js/main.3d1e2cb5.js.map",
+    "787.3b47af9e.chunk.js.map": "/static/js/787.3b47af9e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6d415b33.css",
+    "static/js/main.3d1e2cb5.js"
+  ]
+}
