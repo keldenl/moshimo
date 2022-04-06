@@ -106,7 +106,7 @@ function App() {
     //     "su"
     // ])
     // return
-    fetch('http://localhost:5001/translate', {
+    fetch('https://moshimo.herokuapp.com/translate', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
