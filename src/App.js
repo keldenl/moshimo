@@ -136,11 +136,13 @@ function App() {
     e.nativeEvent.key === 'Enter' && translate();
   }
 
+  const handleMoshimo = () => setSpeakingArr(['mo', 'shi', 'mo']);
+
   const outputDisplay = outputData ?
     <div>
-      <p>{outputData.japanese}</p>
-      <p>{outputData.romanji}</p>
-      <p onClick={() => setSpeakingArr(outputData.romanjiArray)}>
+      <p className='jap-output'>{outputData.japanese}</p>
+      <p className='romanji-output'>{outputData.romanji}</p>
+      <p className='romanji-output' onClick={() => setSpeakingArr(outputData.romanjiArray)}>
         {outputData.romanjiArray.join("").replaceAll("--", " ").split(" ").map((word, index) => {
           return <span key={index} className={index === speakingIdx ? "active" : undefined}>{word} </span>
         })}
@@ -163,10 +165,15 @@ function App() {
         <div className="loadingContainer">
           {isTranslating ?
             <p>Translating...</p>
-            : outputDisplay}
+            : outputDisplay
+          }
+          <div className='footer'>
+            <p className='moshimo' onClick={handleMoshimo}>Moshi Mo</p>
+            <p>Built by <a href="http://keldenl.com">Kelden Lin</a> © {new Date().getFullYear()}</p>
+          </div>
         </div>
-        {!(outputData && outputData.input === input) ?
-          <button onClick={translate} className="translateButton">Translate</button>
+        {!(outputData && outputData.input === input) && input.length > 0 ?
+          <div className="translateButton">Press Enter to Translate</div>
           : undefined}
       </div>
     </div>
